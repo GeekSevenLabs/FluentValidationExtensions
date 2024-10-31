@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>GeekSevenLabs.FluentValidation.Extensions</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Company>GeekSevenLabs</Company>
+        <Authors>Emerson Trindade (MensoDev)</Authors>
+        <Copyright>Copyright 2024 GeekSeven Labs</Copyright>
+        <PackageTags>C#, Csharp, CPF, CNPJ, Validator</PackageTags>
+        <PackageDescription>FluentValidation extensions for CPF, CNPJ and other Brazilian documents</PackageDescription>
+        <PackageProjectUrl>https://github.com/GeekSevenLabs/FluentValidationExtensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/GeekSevenLabs/FluentValidationExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsTrimmable>true</IsTrimmable>
+        <TrimMode>link</TrimMode>
+        <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.10.0"/>
+        <PackageReference Include="GeekSevenLabs.Utilities.Documents" Version="0.0.0-alpha4"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../docs/README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+</Project>

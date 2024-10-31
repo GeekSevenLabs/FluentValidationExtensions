@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekSevenLabs.FluentValidation.Extensions", "src\GeekSevenLabs.FluentValidation.Extensions\GeekSevenLabs.FluentValidation.Extensions.csproj", "{C654909D-49C9-4744-A332-ED8183F93FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekSevenLabs.FluentValidation.Extensions.Tests", "tests\GeekSevenLabs.FluentValidation.Extensions.Tests\GeekSevenLabs.FluentValidation.Extensions.Tests.csproj", "{08DE50D0-21C2-4285-9B14-7572CDF6486E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C654909D-49C9-4744-A332-ED8183F93FE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C654909D-49C9-4744-A332-ED8183F93FE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C654909D-49C9-4744-A332-ED8183F93FE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C654909D-49C9-4744-A332-ED8183F93FE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DE50D0-21C2-4285-9B14-7572CDF6486E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DE50D0-21C2-4285-9B14-7572CDF6486E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DE50D0-21C2-4285-9B14-7572CDF6486E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DE50D0-21C2-4285-9B14-7572CDF6486E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
