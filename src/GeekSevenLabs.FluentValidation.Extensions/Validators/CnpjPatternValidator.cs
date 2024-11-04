@@ -3,7 +3,7 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CnpjPatternValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
+public class CnpjPatternValidator<T> :  PropertyValidator<T, string?>, IPropertyValidator<T, string?>
 {
     private readonly string? _errorMessage;
     private readonly bool _masked;
@@ -22,13 +22,11 @@ public class CnpjPatternValidator<T, TProperty> :  PropertyValidator<T, TPropert
 
     public Regex Pattern { get; private set; }
     
-    public override bool IsValid(ValidationContext<T> context, TProperty value)
+    public override bool IsValid(ValidationContext<T> context, string? value)
     {
-        var cnpj = value?.ToString();
+        if(value.IsNullOrEmpty()) return true; 
         
-        if(cnpj.IsNullOrEmpty()) return true; 
-        
-        var result = CadastroNacionalPessoaJuridica.IsValidPattern(cnpj);
+        var result = CadastroNacionalPessoaJuridica.IsValidPattern(value);
 
         return result switch
         {

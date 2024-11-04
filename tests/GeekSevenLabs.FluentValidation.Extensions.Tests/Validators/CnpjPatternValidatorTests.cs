@@ -135,7 +135,7 @@ public class CnpjPatternValidatorTests
 
         var descriptor = validator.CreateDescriptor();
         
-        var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person, string>;
+        var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person>;
 
         cnpjPatternValidator?.Pattern.Should().Be(CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex());
     }
@@ -149,7 +149,7 @@ public class CnpjPatternValidatorTests
 
         var descriptor = validator.CreateDescriptor();
         
-        var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person, string>;
+        var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person>;
 
         cnpjPatternValidator?.Pattern.Should().Be(CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex());
     }
