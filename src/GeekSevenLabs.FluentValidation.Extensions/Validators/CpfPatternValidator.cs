@@ -3,7 +3,7 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CpfPatternValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
+public class CpfPatternValidator<T> :  PropertyValidator<T, string?>, IPropertyValidator<T, string?>
 {
     private readonly string? _errorMessage;
     private readonly bool _masked;
@@ -17,13 +17,11 @@ public class CpfPatternValidator<T, TProperty> :  PropertyValidator<T, TProperty
     
     public Regex Pattern { get; private set; }
 
-    public override bool IsValid(ValidationContext<T> context, TProperty value)
+    public override bool IsValid(ValidationContext<T> context, string? value)
     {
-        var cpf = value?.ToString();
+        if(value.IsNullOrEmpty()) return true; 
         
-        if(cpf.IsNullOrEmpty()) return true; 
-        
-        var result = CadastroPessoaFisica.IsValidPattern(cpf);
+        var result = CadastroPessoaFisica.IsValidPattern(value);
         
         return (result.IsValidUnmasked && !_masked) || (result.IsValidMasked && _masked);
     }

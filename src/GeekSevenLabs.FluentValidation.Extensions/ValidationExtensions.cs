@@ -12,9 +12,9 @@ public static class ValidationExtensions
     /// <typeparam name="T">Type of object being validated</typeparam>
     /// <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
     /// <returns>a rule builder with cnpj validation included</returns>
-    public static IRuleBuilderOptions<T, string> IsValidCnpj<T>(this IRuleBuilder<T, string> ruleBuilder)
+    public static IRuleBuilderOptions<T, string> IsValidCnpj<T>(this IRuleBuilder<T, string?> ruleBuilder)
     {
-        return ruleBuilder.SetValidator(new CnpjValidator<T, string>());
+        return ruleBuilder.SetValidator(new CnpjValidator<T>())!;
     }
     
     
@@ -26,9 +26,9 @@ public static class ValidationExtensions
     /// <typeparam name="T">Type of object being validated</typeparam>
     /// <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
     /// <param name="masked">Indicates if the validation should use the masked CNPJ pattern</param>
-    public static IRuleBuilderOptions<T, string> IsValidCnpjPattern<T>(this IRuleBuilder<T, string> ruleBuilder, bool masked = true)
+    public static IRuleBuilderOptions<T, string> IsValidCnpjPattern<T>(this IRuleBuilder<T, string?> ruleBuilder, bool masked = true)
     {
-        return ruleBuilder.SetValidator(new CnpjPatternValidator<T, string>(masked: masked));
+        return ruleBuilder.SetValidator(new CnpjPatternValidator<T>(masked: masked))!;
     }
     
     /// <summary>
@@ -39,9 +39,9 @@ public static class ValidationExtensions
     /// <typeparam name="T">Type of object being validated</typeparam>
     /// <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
     /// <returns>a rule builder with CNPJ validation included</returns>
-    public static IRuleBuilderOptions<T, string> IsValidCpf<T>(this IRuleBuilder<T, string> ruleBuilder)
+    public static IRuleBuilderOptions<T, string> IsValidCpf<T>(this IRuleBuilder<T, string?> ruleBuilder)
     {
-        return ruleBuilder.SetValidator(new CpfValidator<T, string>());
+        return ruleBuilder.SetValidator(new CpfValidator<T>())!;
     }
     
     /// <summary>
@@ -53,8 +53,8 @@ public static class ValidationExtensions
     /// <param name="ruleBuilder">The rule builder on which the validator should be defined</param>
     /// <param name="masked">Indicates if the validation should use the masked CPF pattern</param>
     /// <returns>a rule builder with CPF validation included</returns>
-    public static IRuleBuilderOptions<T, string> IsValidCpfPattern<T>(this IRuleBuilder<T, string> ruleBuilder, bool masked = true)
+    public static IRuleBuilderOptions<T, string> IsValidCpfPattern<T>(this IRuleBuilder<T, string?> ruleBuilder, bool masked = true)
     {
-        return ruleBuilder.SetValidator(new CpfPatternValidator<T, string>(masked: masked));
+        return ruleBuilder.SetValidator(new CpfPatternValidator<T>(masked: masked))!;
     }
 }
