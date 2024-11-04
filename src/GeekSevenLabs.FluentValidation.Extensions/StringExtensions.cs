@@ -4,5 +4,5 @@ namespace FluentValidation;
 
 internal static class StringExtensions
 {
-    public static bool IsNullOrEmpty([NotNullWhen(returnValue: false)] this string? value) => string.IsNullOrEmpty(value);
+    public static bool IsNullOrWhiteSpace([NotNullWhen(returnValue: false)] this string? value) => string.IsNullOrWhiteSpace(value);
 }

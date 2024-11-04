@@ -3,29 +3,30 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CnpjPatternValidator<T> :  PropertyValidator<T, string?>, IPropertyValidator<T, string?>
+public class CnpjPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>
 {
     private readonly string? _errorMessage;
     private readonly bool _masked;
-    
+
     public CnpjPatternValidator(string errorMessage = "Formato de CNPJ inválido.", bool masked = true)
     {
         _errorMessage = errorMessage;
         _masked = masked;
 
-        Pattern = masked switch
-        {
-            true  => CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex(),
-            false => CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex()
-        };
+        var pattern = masked
+            ? CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex()
+            : CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex();
+
+        Pattern = new Regex($"^$|({pattern})");
     }
 
+    public override string Name => "CnpjPatternValidator";
     public Regex Pattern { get; private set; }
-    
+
     public override bool IsValid(ValidationContext<T> context, string? value)
     {
-        if(value.IsNullOrEmpty()) return true; 
-        
+        if (value.IsNullOrWhiteSpace()) return true;
+
         var result = CadastroNacionalPessoaJuridica.IsValidPattern(value);
 
         return result switch
@@ -35,11 +36,9 @@ public class CnpjPatternValidator<T> :  PropertyValidator<T, string?>, IProperty
             _ => false
         };
     }
-    
+
     protected override string GetDefaultMessageTemplate(string errorCode)
     {
         return string.IsNullOrWhiteSpace(_errorMessage) ? base.GetDefaultMessageTemplate(errorCode) : _errorMessage;
     }
-
-    public override string Name => "CnpjPatternValidator";
 }
