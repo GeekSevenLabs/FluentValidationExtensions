@@ -127,10 +127,10 @@ public class CpfPatternValidatorTests
         );
 
         var descriptor = validator.CreateDescriptor();
-        
         var cpfPatternValidator = descriptor.Rules.First().Components.First().Validator as CpfPatternValidator<Person>;
 
-        cpfPatternValidator?.Pattern.Should().Be(CadastroPessoaFisica.CreateFormattedCpfRegex());
+        var pattern = CadastroPessoaFisica.CreateMaskedCpfRegex();
+        cpfPatternValidator?.Pattern.ToString().Should().Be($"^$|({pattern})");
     }
     
     [Fact]
@@ -141,10 +141,10 @@ public class CpfPatternValidatorTests
         );
 
         var descriptor = validator.CreateDescriptor();
-        
         var cpfPatternValidator = descriptor.Rules.First().Components.First().Validator as CpfPatternValidator<Person>;
-
-        cpfPatternValidator?.Pattern.Should().Be(CadastroPessoaFisica.CreateCpfRegex());
+        
+        var pattern = CadastroPessoaFisica.CreateUnmaskedCpfRegex();
+        cpfPatternValidator?.Pattern.ToString().Should().Be($"^$|({pattern})");
     }
     
 }

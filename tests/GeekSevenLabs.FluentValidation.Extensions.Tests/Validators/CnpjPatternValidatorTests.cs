@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using FluentAssertions;
 using FluentValidation;
 using FluentValidation.TestHelper;
@@ -134,10 +135,10 @@ public class CnpjPatternValidatorTests
         );
 
         var descriptor = validator.CreateDescriptor();
-        
         var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person>;
 
-        cnpjPatternValidator?.Pattern.Should().Be(CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex());
+        var pattern = CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex();
+        cnpjPatternValidator?.Pattern.ToString().Should().Be($"^$|({pattern})");
     }
     
     [Fact]
@@ -148,9 +149,9 @@ public class CnpjPatternValidatorTests
         );
 
         var descriptor = validator.CreateDescriptor();
-        
         var cnpjPatternValidator = descriptor.Rules.First().Components.First().Validator as CnpjPatternValidator<Person>;
 
-        cnpjPatternValidator?.Pattern.Should().Be(CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex());
+        var pattern = CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex();
+        cnpjPatternValidator?.Pattern.ToString().Should().Be($"^$|({pattern})");
     }
 }
