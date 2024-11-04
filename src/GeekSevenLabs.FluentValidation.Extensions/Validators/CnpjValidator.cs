@@ -2,7 +2,7 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-internal class CnpjValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
+public class CnpjValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
 {
     private readonly string? _errorMessage;
 
