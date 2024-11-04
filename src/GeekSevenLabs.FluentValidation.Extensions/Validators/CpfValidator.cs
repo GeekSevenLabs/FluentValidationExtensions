@@ -2,16 +2,17 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-internal class CadastroPessoaFisicaValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
+internal class CpfValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
 {
     private readonly string? _errorMessage;
 
-    public CadastroPessoaFisicaValidator(string errorMessage) => _errorMessage = errorMessage;
-    public CadastroPessoaFisicaValidator() : this("O CPF é inválido!") { }
+    public CpfValidator(string errorMessage) => _errorMessage = errorMessage;
+    public CpfValidator() : this("O CPF é inválido!") { }
     
     public override bool IsValid(ValidationContext<T> context, TProperty value)
     {
-        var cpf = value?.ToString() ?? string.Empty;
+        var cpf = value?.ToString();
+        if (string.IsNullOrWhiteSpace(cpf)) return true;
         var isValid = CadastroPessoaFisica.IsValid(cpf);
         return isValid;
     }
@@ -21,5 +22,5 @@ internal class CadastroPessoaFisicaValidator<T, TProperty> :  PropertyValidator<
         return string.IsNullOrWhiteSpace(_errorMessage) ? base.GetDefaultMessageTemplate(errorCode) : _errorMessage;
     }
 
-    public override string Name => "CadastroPessoaFisicaValidator";
+    public override string Name => "CpfValidator";
 }

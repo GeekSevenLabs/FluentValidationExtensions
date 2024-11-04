@@ -2,16 +2,17 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-internal class CadastroNacionalPessoaJuridicaValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
+internal class CnpjValidator<T, TProperty> :  PropertyValidator<T, TProperty>, IPropertyValidator<T, TProperty>
 {
     private readonly string? _errorMessage;
 
-    public CadastroNacionalPessoaJuridicaValidator(string errorMessage) => _errorMessage = errorMessage;
-    public CadastroNacionalPessoaJuridicaValidator() : this("O CNPJ é inválido!") { }
+    public CnpjValidator(string errorMessage) => _errorMessage = errorMessage;
+    public CnpjValidator() : this("O CNPJ é inválido!") { }
     
     public override bool IsValid(ValidationContext<T> context, TProperty value)
     {
         var cnpj = value?.ToString() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(cnpj)) return true;
         var isValid = CadastroNacionalPessoaJuridica.IsValid(cnpj);
         return isValid;
     }
@@ -21,5 +22,5 @@ internal class CadastroNacionalPessoaJuridicaValidator<T, TProperty> :  Property
         return string.IsNullOrWhiteSpace(_errorMessage) ? base.GetDefaultMessageTemplate(errorCode) : _errorMessage;
     }
 
-    public override string Name => "CadastroNacionalPessoaJuridicaValidator";
+    public override string Name => "CnpjValidator";
 }

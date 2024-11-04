@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <TargetFrameworks>net8.0;</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -35,7 +35,7 @@
     
     <ItemGroup>
         <PackageReference Include="FluentValidation" Version="11.10.0"/>
-        <PackageReference Include="GeekSevenLabs.Utilities.Documents" Version="0.0.0-alpha4"/>
+        <PackageReference Include="GeekSevenLabs.Utilities.Documents" Version="0.0.0-alpha7"/>
     </ItemGroup>
 
     <ItemGroup>
