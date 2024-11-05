@@ -1,9 +1,8 @@
-using System.Text.RegularExpressions;
 using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CpfPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>
+public class CpfPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>, IRegularExpressionValidator
 {
     private readonly string? _errorMessage;
     private readonly bool _masked;
@@ -14,11 +13,11 @@ public class CpfPatternValidator<T> : PropertyValidator<T, string?>, IPropertyVa
         _masked = masked;
 
         var pattern = _masked ? CadastroPessoaFisica.CreateMaskedCpfRegex() : CadastroPessoaFisica.CreateUnmaskedCpfRegex();
-        Pattern = new Regex($"^$|({pattern})");
+        Expression = $"^$|({pattern})";
     }
 
     public override string Name => "CpfPatternValidator";
-    public Regex Pattern { get; private set; }
+    public string Expression { get; private set; }
 
     public override bool IsValid(ValidationContext<T> context, string? value)
     {
