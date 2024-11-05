@@ -2,7 +2,7 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CpfValidator<T>(string errorMessage = "O CPF é inválido!") : PropertyValidator<T, string?>, IPropertyValidator<T, string?>
+public class CpfValidator<T>(string errorMessage = "O CPF é inválido!") : PropertyValidator<T, string?>, IPropertyValidator<T, string?>, ICpfValidator
 {
     public override string Name => "CpfValidator";
     

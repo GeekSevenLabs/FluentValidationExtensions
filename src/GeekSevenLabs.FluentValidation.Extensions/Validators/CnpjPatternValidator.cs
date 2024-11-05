@@ -1,9 +1,8 @@
-using System.Text.RegularExpressions;
 using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CnpjPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>
+public class CnpjPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>, IRegularExpressionValidator
 {
     private readonly string? _errorMessage;
     private readonly bool _masked;
@@ -17,11 +16,11 @@ public class CnpjPatternValidator<T> : PropertyValidator<T, string?>, IPropertyV
             ? CadastroNacionalPessoaJuridica.CreateMaskedCnpjRegex()
             : CadastroNacionalPessoaJuridica.CreateUnmaskedCnpjRegex();
 
-        Pattern = new Regex($"^$|({pattern})");
+        Expression = $"^$|({pattern})";
     }
 
     public override string Name => "CnpjPatternValidator";
-    public Regex Pattern { get; private set; }
+    public string Expression { get; private set; }
 
     public override bool IsValid(ValidationContext<T> context, string? value)
     {

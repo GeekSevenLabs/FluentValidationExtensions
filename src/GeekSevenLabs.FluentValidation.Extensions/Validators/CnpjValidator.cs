@@ -2,7 +2,7 @@ using GeekSevenLabs.Utilities.Documents;
 
 namespace FluentValidation.Validators;
 
-public class CnpjValidator<T>(string errorMessage = "O CNPJ é inválido!") :  PropertyValidator<T, string?>, IPropertyValidator<T, string?>
+public class CnpjValidator<T>(string errorMessage = "O CNPJ é inválido!") :  PropertyValidator<T, string?>, IPropertyValidator<T, string?>, ICnpjValidator
 {
     public override string Name => "CnpjValidator";
     
