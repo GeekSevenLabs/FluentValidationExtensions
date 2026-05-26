@@ -1,10 +1,3 @@
-using System.Text.RegularExpressions;
-using FluentAssertions;
-using FluentValidation;
-using FluentValidation.TestHelper;
-using FluentValidation.Validators;
-using GeekSevenLabs.Utilities.Documents;
-
 namespace GeekSevenLabs.FluentValidation.Extensions.Tests.Validators;
 
 public class CnpjPatternValidatorTests

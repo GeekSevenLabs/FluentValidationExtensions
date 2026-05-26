@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;</TargetFrameworks>
+        <TargetFrameworks>net10.0;</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -11,7 +11,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Company>GeekSevenLabs</Company>
         <Authors>Emerson Trindade (MensoDev)</Authors>
-        <Copyright>Copyright 2024 GeekSeven Labs</Copyright>
+        <Copyright>Copyright 2026 GeekSeven Labs</Copyright>
         <PackageTags>C#, Csharp, CPF, CNPJ, Validator</PackageTags>
         <PackageDescription>FluentValidation extensions for CPF, CNPJ and other Brazilian documents</PackageDescription>
         <PackageProjectUrl>https://github.com/GeekSevenLabs/FluentValidationExtensions</PackageProjectUrl>
@@ -34,7 +34,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.10.0"/>
+        <PackageReference Include="FluentValidation" Version="12.1.1" />
         <PackageReference Include="GeekSevenLabs.Utilities.Documents" Version="0.0.0-alpha8"/>
     </ItemGroup>
 

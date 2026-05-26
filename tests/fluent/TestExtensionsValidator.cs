@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace GeekSevenLabs.FluentValidation.Extensions.Tests;
 
 public class TestExtensionsValidator : InlineValidator<Person>

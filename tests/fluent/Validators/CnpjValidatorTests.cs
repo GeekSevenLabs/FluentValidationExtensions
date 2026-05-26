@@ -1,6 +1,3 @@
-using FluentValidation;
-using FluentValidation.TestHelper;
-
 namespace GeekSevenLabs.FluentValidation.Extensions.Tests.Validators;
 
 public class CnpjValidatorTests

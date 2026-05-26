@@ -1,5 +1,4 @@
-using GeekSevenLabs.Utilities.Documents;
-
+// ReSharper disable once CheckNamespace
 namespace FluentValidation.Validators;
 
 public class CnpjPatternValidator<T> : PropertyValidator<T, string?>, IPropertyValidator<T, string?>, IRegularExpressionValidator
